@@ -23,3 +23,4 @@ for instance in ec2.instances.all():
             \n
             """
         )
+        
