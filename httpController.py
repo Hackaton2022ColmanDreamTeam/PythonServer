@@ -7,6 +7,10 @@ from io import BytesIO
 
 import requests
 
+import codecs
+
+from ruleHandler import ruleHandler
+
 # class Conteller:
 #     def __init__(self,view,model):
 #         self.View = view
@@ -18,6 +22,12 @@ import requests
 
 
 class Server(BaseHTTPRequestHandler):
+
+
+    def __init__(self,Rule_Handler:ruleHandler):
+        self.RuleHander = Rule_Handler
+
+
     def _set_response(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -33,14 +43,18 @@ class Server(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
+        Rule = codecs.decode(body, 'UTF-8') #decode the byte to string
+        result = self.RuleHander.addRule(Rule) # send the rule to the rulehandler
+
         self.send_response(200)
         self.end_headers()
-        response = BytesIO()
-        response.write(b'This is POST request. ')
-        response.write(b'Received: ')
-        response.write(body)
-        self.wfile.write(response.getvalue())
-        print(response.getvalue())
+        # response = BytesIO()
+        # response.write(str.encode(result)) # send the result from the rule
+        # response.write(b'This is POST request. ')
+        # response.write(b'Received: ')
+        # response.write(body)
+        self.wfile.write(str.encode(result))
+        # print(response.getvalue())
 
 def run():
     port = 8080
