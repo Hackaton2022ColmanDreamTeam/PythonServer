@@ -11,6 +11,7 @@ import json
 class EC2_Model:
 
     def __init__(self):
+        self.rules =[]
         self.cpuSer = service.Service("CPUUtilization", "Percent")
         self.IoSer = service.Service("DiskReadOps", "Count")
         self.serviceArray = [self.IoSer, self.cpuSer]
