@@ -52,11 +52,12 @@ class Service:
                 )
 
     def Json(self):
-         while self.serverState.get("Name") == 'running':
-        #for x in range(5):
-           # datapoints_sorted = sorted(self.response["Datapoints"], key=lambda x: x["Timestamp"])
-            datapoint = self.response["Datapoints"], key=lambda x: x["Timestamp"]
-            #for datapoint in datapoints_sorted:
+
+       # while self.serverState.get("Name") == 'running':
+        for x in range(3):
+            time.sleep(1)
+            datapoints_sorted = sorted(self.response["Datapoints"], key=lambda x: x["Timestamp"])
+            for datapoint in datapoints_sorted:
                 str = f"{datapoint['Timestamp']}, Average: {datapoint['Average']}"
                 # newStr = str +"\n"
                 tmp = str.split(",")
