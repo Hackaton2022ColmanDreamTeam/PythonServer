@@ -4,6 +4,17 @@ import constant #add another python file for the keys
 #Should get the Instance ID for those functions except the creation.
 class InstancesFunctions:
 
+
+    # def __init__(self,AWSAccess_Key,AWSSecret_Key):
+    #     self.AWSAccessKey = AWSAccess_Key
+    #     self.AWSSecretKey = AWSSecret_Key
+    #     self.Instance = ""
+
+
+    # def SetIntanceID(self,ID):
+    #     self.Instance = ID
+
+
     def InstanceRemover():
         # connect to the client using the keys
         # insert your own keys below
