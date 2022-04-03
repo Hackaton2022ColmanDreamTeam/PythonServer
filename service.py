@@ -1,3 +1,4 @@
+from threading import Thread
 import boto3
 from credentials import AWS_ACCESS_KEY, AWS_SECRET_KEY
 from datetime import datetime, timedelta
@@ -5,8 +6,9 @@ import time
 import json
 
 
-class Service:
+class Service(Thread):
     def __init__(self, parameter, units):
+        Thread.__init__(self)
         self.response = None
         self.parameter = parameter
         self.units = units
@@ -54,8 +56,9 @@ class Service:
     def Json(self):
 
        # while self.serverState.get("Name") == 'running':
-        for x in range(3):
-            time.sleep(1)
+        # for x in range(3):
+        #     time.sleep(1)
+        while True:
             datapoints_sorted = sorted(self.response["Datapoints"], key=lambda x: x["Timestamp"])
             for datapoint in datapoints_sorted:
                 str = f"{datapoint['Timestamp']}, Average: {datapoint['Average']}"
@@ -67,6 +70,11 @@ class Service:
                 self.Buffer["Average"].append(tmp3[1])
                 # print(self.Buffer)
 
-            time.sleep(60)
-            self.responceInitialiez()
+            # print(self.parameter)
             print(self.parameter + json.dumps(self.Buffer))
+            time.sleep(2)
+            # self.responceInitialiez()
+
+
+    def run(self):
+        self.Json()
