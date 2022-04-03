@@ -24,7 +24,7 @@ class InstancesFunctions:
                             aws_secret_access_key = constant.AWS_SECRET_KEY)
 
 
-        InstanceID2Remove = ["i-065ccfa667b1da5d6"] # ec2 instance ID for example
+        InstanceID2Remove = ["i-0251898ab21ce07ba"] # ec2 instance ID for example
 
 
         # Terminate ec2 instance
@@ -41,7 +41,7 @@ class InstancesFunctions:
                             aws_secret_access_key = constant.AWS_SECRET_KEY)
 
 
-        InstanceID2Remove = ["i-065ccfa667b1da5d6"] # ec2 instance ID for example
+        InstanceID2Remove = ["i-0251898ab21ce07ba"] # ec2 instance ID for example
 
 
         # Terminate ec2 instance
@@ -58,7 +58,7 @@ class InstancesFunctions:
                             aws_secret_access_key = constant.AWS_SECRET_KEY)
 
 
-        InstanceID2Remove = ["i-065ccfa667b1da5d6"] # ec2 instance ID for example
+        InstanceID2Remove = ["i-0251898ab21ce07ba"] # ec2 instance ID for example
 
 
         # Terminate ec2 instance

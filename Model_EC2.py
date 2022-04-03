@@ -29,3 +29,7 @@ class EC2_Model:
 
 
 
+    def GetCPUData(self):
+        return self.cpuSer.Buffer['Average'][0]
+
+

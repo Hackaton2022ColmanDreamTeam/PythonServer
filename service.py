@@ -11,7 +11,7 @@ class Service:
         self.parameter = parameter
         self.units = units
         self.Buffer = {"Date": [], "Average": []}
-        self.INSTANCE_ID = "i-075b0fe0809290316"
+        self.INSTANCE_ID = "i-0251898ab21ce07ba"
         self.session = boto3.Session(
             aws_access_key_id=AWS_ACCESS_KEY,
             aws_secret_access_key=AWS_SECRET_KEY,
