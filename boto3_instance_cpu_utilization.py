@@ -2,6 +2,7 @@ import boto3
 from datetime import datetime, timedelta
 from credentials import AWS_ACCESS_KEY, AWS_SECRET_KEY
 
+
 # define the instance ID we'd like to inspect
 INSTANCE_ID = "i-075b0fe0809290316"
 
@@ -13,6 +14,7 @@ session = boto3.Session(
 
 # get the CloudWatch client from the session object
 client = session.client("cloudwatch", region_name="us-east-1")
+
 
 # get metric statistics about an EC2 instance
 # docs: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch.html#CloudWatch.Client.get_metric_statistics
