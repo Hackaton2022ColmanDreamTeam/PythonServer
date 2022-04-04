@@ -71,7 +71,7 @@ class Service(Thread):
                 # print(self.Buffer)
 
             # print(self.parameter)
-            time.sleep(60)
+            time.sleep(5)
             print(self.parameter + json.dumps(self.Buffer))
             # self.responceInitialiez()
 

@@ -1,16 +1,19 @@
 import imp
+from queue import Queue
 from InstancesFunction import InstancesFunctions
 import Model_EC2
 from rule import Rule
 import service
 from threading import Thread
 
-class ruleHandler(Thread):
 
-    def __init__(self, model_ec2):
+class RuleHandler(Thread):
+
+    def __init__(self, model_ec2, queue:Queue):
+        Thread.__init__(self)
         self.model_EC2 = model_ec2
         self.insCre = InstancesFunctions()
-        self.rules = []
+        self.rulesString = queue
 
     def addRule(self, rule):
         parts = rule.split("/")
@@ -33,9 +36,8 @@ class ruleHandler(Thread):
 
     def handleRules(self):
         while True:
-            for r in self.rules:
-                r.Execute()
-
+            if(not self.rulesString.empty()):
+                data = self.rulesString.get()
 
 
     def createInstance(self,str):

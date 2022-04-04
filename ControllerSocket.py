@@ -1,12 +1,14 @@
+from ast import Bytes
 import socket
+import requests
 
 HOST = "localhost"
-PORT = 65432
+PORT = 7000
 
 # basic function calls the model
 def CPUUtil():
     number = 28
-    return "your utilization is " + str(number) +" percent" 
+    return '{ "name":"John", "age":30, "city":"New York"}' 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -19,4 +21,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if not data:
                 break
             Result = CPUUtil()
-            conn.sendall(str.encode(Result)) # the result from the model
+            req
+            conn.sendall(bytes(b'{ "value":"True" }')) # the result from the model
+
+# if __name__ == "__main__":
+#     main()

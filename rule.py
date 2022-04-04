@@ -1,11 +1,11 @@
 from tokenize import Double
 from InstancesFunction import InstancesFunctions
-from ruleHandler import ruleHandler
+# from ruleHandler import ruleHandler
 
 class Rule:
     
 
-    def __init__(self,serverType,command,data,tresh,ruleHandler:ruleHandler):
+    def __init__(self,serverType,command,data,tresh,ruleHandler):
         self.Command = command
         self.Data = data
         self.TH = tresh

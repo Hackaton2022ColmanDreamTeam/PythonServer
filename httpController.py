@@ -1,23 +1,8 @@
-import cgi
-import logging
-import sys
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import http.client
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from io import BytesIO
 
-import requests
 
-# class Conteller:
-#     def __init__(self,view,model):
-#         self.View = view
-#         self.Model = model
-#         # self.commands = []
-#         # for i in range(6):
-#         #     self.commands[i] = i
-
-
-
-class Server(BaseHTTPRequestHandler):
+class HttpController(BaseHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -42,3 +27,12 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(response.getvalue())
         print(response.getvalue())
 
+def run():
+    port = 8080
+    host = "127.0.0.1"
+    server = HTTPServer((host,port), HttpController)
+    server.serve_forever()
+    server.server_close()
+
+# if __name__ == "__main__":
+#     run()
