@@ -14,7 +14,8 @@ class InstanceCreator:
 
     #create a new ec2 instance
     # t2.micro/ami-0c02fb55956c7d316  - free tier  
-    conn = ec2.run_instances(InstanceType="t2.micro",
+    def createInstance(self):
+        conn = self.ec2.run_instances(InstanceType="t2.micro",
                             MaxCount = 1,
                             MinCount = 1,
                             ImageId = "ami-0c02fb55956c7d316")

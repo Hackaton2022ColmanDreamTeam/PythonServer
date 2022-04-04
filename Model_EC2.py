@@ -87,3 +87,5 @@ class EC2_Model:
         #         print(ser.parameter)
         #         x = StartThread(ser)
         #         x.run()
+    def getCPUUtilization(self):
+        return self.cpuServiceThread.Buffer;
