@@ -42,12 +42,3 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(response.getvalue())
         print(response.getvalue())
 
-def run():
-    port = 8080
-    host = "127.0.0.1"
-    server = HTTPServer((host,port), Server)
-    server.serve_forever()
-    server.server_close()
-
-if __name__ == '__main__':
-    run()
