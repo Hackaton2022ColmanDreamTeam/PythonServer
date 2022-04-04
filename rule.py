@@ -20,8 +20,8 @@ class Rule:
         if(self.Data == "CPU"):
             if(self.Command == "Create"):
                 if(json["Average"] > self.TH):
-                    self.RuleHandler.createInstance()
+                    self.RuleHandler.createInstance(json["ID"])
                 if(json["Average"] < self.TH):
-                    self.RuleHandler.removeInstance()
+                    self.RuleHandler.removeInstance(json["ID"])
             
             #add cpu and io getter

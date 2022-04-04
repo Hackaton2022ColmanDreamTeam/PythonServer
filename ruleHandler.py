@@ -38,14 +38,14 @@ class ruleHandler(Thread):
 
 
 
-    def createInstance(self):
-        self.insCre.InstanceCreator() 
+    def createInstance(self,str):
+        self.insCre.InstanceCreator(str) 
 
-    def removeInstance(self):
-        self.insCre.InstanceRemover() 
+    def removeInstance(self, str):
+        self.insCre.InstanceRemover(str) 
 
-    def stopInstance(self):
-        self.insCre.InstanceStoper() 
+    def stopInstance(self,str):
+        self.insCre.InstanceStoper(str) 
 
     def run(self):
         self.handleRules()
