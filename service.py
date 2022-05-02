@@ -7,20 +7,21 @@ import json
 
 
 class Service(Thread):
-    def __init__(self, parameter, units):
+    def __init__(self, parameter, units, aws_accesskey, aws_secretkey, instanceid, region):
         Thread.__init__(self)
         self.response = None
         self.parameter = parameter
         self.units = units
         self.Buffer = {"Date": [], "Average": []}
-        self.INSTANCE_ID = "i-075b0fe0809290316"
+        self.INSTANCE_ID = instanceid
+        self.region = region
         self.session = boto3.Session(
-            aws_access_key_id=AWS_ACCESS_KEY,
-            aws_secret_access_key=AWS_SECRET_KEY,
-            region_name='us-east-1'
+            aws_access_key_id=aws_accesskey,
+            aws_secret_access_key=aws_secretkey,
+            region_name=self.region
         )
         self.ec2 = self.session.resource("ec2")
-        self.client = self.session.client("cloudwatch", region_name="us-east-1")
+        self.client = self.session.client("cloudwatch", region_name=self.region)
         for instance in self.ec2.instances.all():
             if instance.id == self.INSTANCE_ID:
                 self.serverState = instance.state
@@ -31,9 +32,9 @@ class Service(Thread):
             Namespace="AWS/EC2",
             MetricName=self.parameter,
             Dimensions=[{"Name": "InstanceId", "Value": self.INSTANCE_ID}],
-            StartTime=datetime.utcnow() - timedelta(seconds=120),
+            StartTime=datetime.utcnow() - timedelta(seconds=3600),
             EndTime=datetime.utcnow(),
-            Period=60,
+            Period=300,
             Statistics=[
                 "Average",
             ],

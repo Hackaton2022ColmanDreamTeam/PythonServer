@@ -25,10 +25,10 @@ class StartThread(Thread):
 
 class EC2_Model:
 
-    def __init__(self):
-        self.cpuServiceThread = service.Service("CPUUtilization","Percent")
-        self.IoServiceThread = service.Service("DiskReadOps","Count")
-        self.netPacOutServiceThread = service.Service("NetPacketOut", "Count")
+    def __init__(self, aws_accesskey, aws_secretkey, instanceid, region):
+        self.cpuServiceThread = service.Service("CPUUtilization", "Percent", aws_accesskey, aws_secretkey, instanceid, region)
+        self.IoServiceThread = service.Service("DiskReadOps", "Count", aws_accesskey, aws_secretkey, instanceid, region)
+        self.netPacOutServiceThread = service.Service("NetPacketOut", "Count", aws_accesskey, aws_secretkey, instanceid, region)
 
         # self.cpuSer = service.Service("CPUUtilization", "Percent")
         # self.IoSer = service.Service("DiskReadOps", "Count")

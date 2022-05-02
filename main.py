@@ -4,6 +4,8 @@ import Model_EC2
 import serverThreadHandler
 from ruleHandler import RuleHandler
 from queue import Queue
+from view import View
+from Controller import Controller
 from httpController import HttpController
 
 def main():
@@ -24,4 +26,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    controller = Controller()
+    view = View(controller)
+    view.start()
