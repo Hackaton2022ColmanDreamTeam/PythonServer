@@ -5,14 +5,16 @@ from InstancesFunction import InstancesFunctions
 class Rule:
     
 
-    def __init__(self,serverType,command,data,tresh,ruleHandler):
+    def __init__(self,serverType,command,data,tresh,ruleHandler, ruleId):
         self.Command = command
         self.Data = data
         self.TH = tresh
         self.serverType = serverType
         self.RuleHandler = ruleHandler
+        self.Id = ruleId
 
-
+    def getRuleId(self):
+        return self.Id
     
     def Execute(self):
         json = self.RuleHandler.model_EC2.getCPUUtilization()

@@ -7,7 +7,6 @@ import service
 from threading import Thread
 
 import boto3
-from credentials import AWS_ACCESS_KEY, AWS_SECRET_KEY
 from datetime import datetime, timedelta
 import time
 import json
@@ -29,10 +28,15 @@ class EC2_Model:
         self.cpuServiceThread = service.Service("CPUUtilization", "Percent", aws_accesskey, aws_secretkey, instanceid, region)
         self.IoServiceThread = service.Service("DiskReadOps", "Count", aws_accesskey, aws_secretkey, instanceid, region)
         self.netPacOutServiceThread = service.Service("NetPacketOut", "Count", aws_accesskey, aws_secretkey, instanceid, region)
+<<<<<<< Updated upstream
 
         # self.cpuSer = service.Service("CPUUtilization", "Percent")
         # self.IoSer = service.Service("DiskReadOps", "Count")
         # self.netPacOutSer = service.Service("NetPacketOut", "Count")
+=======
+        self.AWS_ACCESS_KEY = aws_accesskey
+        self.AWS_SECRET_KEY = aws_secretkey
+>>>>>>> Stashed changes
         self.serviceArray = [self.cpuServiceThread, self.IoServiceThread]
 
     def StartAll(self):

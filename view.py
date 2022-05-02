@@ -1,6 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, font
 from tkinter.font import Font
+<<<<<<< Updated upstream
+=======
+import styles
+>>>>>>> Stashed changes
 
 # try:
 #     from ctypes import windll
@@ -55,11 +59,18 @@ class View:
             )
 
 
+<<<<<<< Updated upstream
             self.instaceId = []
             self.region = ""
             self.access_key = ""
             self.secret_key = ""
             self.ami = ""
+=======
+            self.instaceId = ""
+            self.region = ""
+            self.access_key = ""
+            self.secret_key = ""
+>>>>>>> Stashed changes
 
             self["background"] = COLOUR_LIGHT_BACKGROUND
             self.title("Welcom to PCloud")
@@ -72,9 +83,14 @@ class View:
             self.pick_rule_bar.place(height=1000, width=1920, y=100)
 
 
+<<<<<<< Updated upstream
 
         def setInstaceId(self, id):
             self.instaceId.append(id)
+=======
+        def setInstaceId(self, id):
+            self.instaceId = id
+>>>>>>> Stashed changes
             print(self.instaceId)
 
         def setRegion(self, region):
@@ -90,20 +106,27 @@ class View:
             self.secret_key = key
             print(self.secret_key)
 
+<<<<<<< Updated upstream
         def setAmi(self, key):
             self.ami = key
             print(self.ami)
 
+=======
+>>>>>>> Stashed changes
 
         def apply(self):
             rule = self.pick_rule_bar.apply()
             self.controller.addRuleTodict(rule['Type'], rule)
+<<<<<<< Updated upstream
             user_details = { "access_key": self.access_key,
                              "secret_key": self.secret_key,
                              "instance_id": self.instaceId,
                              "region": self.region,
                              "ami": self.ami}
             self.controller.applyRule(rule, user_details)
+=======
+            self.controller.applyRule(rule, self.access_key, self.secret_key, self.instaceId, self.region)
+>>>>>>> Stashed changes
             print(self.controller.dict)
 
 
@@ -113,7 +136,10 @@ class View:
             self.instance_id = tk.StringVar()
             self.access_key = tk.StringVar()
             self.secret_key = tk.StringVar()
+<<<<<<< Updated upstream
             self.AMI = tk.StringVar()
+=======
+>>>>>>> Stashed changes
             self.region = tk.StringVar()
             self["style"] = "PCloud.TFrame"
 
@@ -143,7 +169,11 @@ class View:
 
             # access key-----------------------------------
 
+<<<<<<< Updated upstream
             AWS_ACCESS_KEY_label = ttk.Label(self, text="AWS ACCESS KEY:", style="PCloud_Text.TLabel")
+=======
+            AWS_ACCESS_KEY_label = ttk.Label(self, text="Insert ACCESS KEY:", style="PCloud_Text.TLabel")
+>>>>>>> Stashed changes
             AWS_ACCESS_KEY_label.config(font=("Segoe UI", 15))
             AWS_ACCESS_KEY_label.grid(row=0, column=6)
             AWS_ACCESS_KEY_entry = ttk.Entry(self, width=20, textvariable=self.access_key)
@@ -155,7 +185,11 @@ class View:
 
             # secret key-----------------------------------
 
+<<<<<<< Updated upstream
             AWS_Secret_KEY_label = ttk.Label(self, text="AWS Secret KEY:", style="PCloud_Text.TLabel")
+=======
+            AWS_Secret_KEY_label = ttk.Label(self, text="Insert Secret KEY:", style="PCloud_Text.TLabel")
+>>>>>>> Stashed changes
             AWS_Secret_KEY_label.config(font=("Segoe UI", 15))
             AWS_Secret_KEY_label.grid(row=0, column=9)
             AWS_Secret_KEY_entry = ttk.Entry(self, width=20, textvariable=self.secret_key)
@@ -165,6 +199,7 @@ class View:
                                                     command=lambda: container.setSecretKey(AWS_Secret_KEY_entry.get()))
             enterAWS_Secret_KEY_button.grid(row=0, column=11)
 
+<<<<<<< Updated upstream
             # ami-----------------------------------
 
             AWS_AMI_label = ttk.Label(self, text="AWS AMI ID:", style="PCloud_Text.TLabel")
@@ -179,6 +214,10 @@ class View:
 
             for children in self.winfo_children():
                 children.grid_configure(padx=7, pady=7)
+=======
+            for children in self.winfo_children():
+                children.grid_configure(padx=15, pady=15)
+>>>>>>> Stashed changes
 
     class ruleBarFrame(ttk.Frame):
         def __init__(self, container):
@@ -215,7 +254,11 @@ class View:
             self.action_label.config(font=("Segoe UI", 15))
             self.action_label.grid(row=2, column=4, padx=(0, 10))
 
+<<<<<<< Updated upstream
             self.action_list = ttk.Combobox(self, width=30, textvariable="Create", values=["Create", "Remove", "Start", "Stop"])
+=======
+            self.action_list = ttk.Combobox(self, width=30, textvariable="Create", values=["Create", "Stop"])
+>>>>>>> Stashed changes
             self.action_list.grid(row=2, column=5)
 
             # Threshold ----------------------------------------
@@ -287,4 +330,8 @@ class View:
         quit_button.grid()
         quit_button.place(y=900, x=1800)
 
+<<<<<<< Updated upstream
         root.mainloop()
+=======
+        root.mainloop()
+>>>>>>> Stashed changes

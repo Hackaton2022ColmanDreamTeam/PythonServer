@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from io import BytesIO
+from socketserver import StreamRequestHandler
 
 
 class HttpController(BaseHTTPRequestHandler):
@@ -7,6 +8,7 @@ class HttpController(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
+
 
     def do_GET(self):
         self.send_response(200)
@@ -27,12 +29,12 @@ class HttpController(BaseHTTPRequestHandler):
         self.wfile.write(response.getvalue())
         print(response.getvalue())
 
-def run():
-    port = 8080
-    host = "127.0.0.1"
-    server = HTTPServer((host,port), HttpController)
-    server.serve_forever()
-    server.server_close()
+# def run():
+#     port = 8080
+#     host = "127.0.0.1"
+#     server = HTTPServer((host,port), HttpController)
+#     server.serve_forever()
+#     server.server_close()
 
 # if __name__ == "__main__":
 #     run()

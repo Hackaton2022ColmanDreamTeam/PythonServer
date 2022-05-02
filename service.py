@@ -1,23 +1,37 @@
 from threading import Thread
 import boto3
-from credentials import AWS_ACCESS_KEY, AWS_SECRET_KEY
+# from credentials import AWS_SECRET_KEY, AWS_ACCESS_KEY
 from datetime import datetime, timedelta
 import time
 import json
 
 
 class Service(Thread):
+<<<<<<< Updated upstream
     def __init__(self, parameter, units, aws_accesskey, aws_secretkey, instanceid, region):
+=======
+    def __init__(self, data, units, aws_accesskey, aws_secretkey, instance_id, region):
+>>>>>>> Stashed changes
         Thread.__init__(self)
         self.response = None
-        self.parameter = parameter
+        self.data = data
         self.units = units
+        self.region = region
+        self.AWS_ACCESS_KEY = aws_accesskey
+        self.AWS_SECRET_KEY = aws_secretkey
         self.Buffer = {"Date": [], "Average": []}
+<<<<<<< Updated upstream
         self.INSTANCE_ID = instanceid
         self.region = region
         self.session = boto3.Session(
             aws_access_key_id=aws_accesskey,
             aws_secret_access_key=aws_secretkey,
+=======
+        self.INSTANCE_ID = instance_id
+        self.session = boto3.Session(
+            aws_access_key_id=self.AWS_ACCESS_KEY,
+            aws_secret_access_key=self.AWS_SECRET_KEY,
+>>>>>>> Stashed changes
             region_name=self.region
         )
         self.ec2 = self.session.resource("ec2")
@@ -30,7 +44,7 @@ class Service(Thread):
     def responceInitialiez(self):
         self.response = self.client.get_metric_statistics(
             Namespace="AWS/EC2",
-            MetricName=self.parameter,
+            MetricName=self.data,
             Dimensions=[{"Name": "InstanceId", "Value": self.INSTANCE_ID}],
             StartTime=datetime.utcnow() - timedelta(seconds=3600),
             EndTime=datetime.utcnow(),
@@ -73,7 +87,8 @@ class Service(Thread):
 
             # print(self.parameter)
             time.sleep(5)
-            print(self.parameter + json.dumps(self.Buffer))
+            print(self.data + json.dumps(self.Buffer))
+            print("here")
             # self.responceInitialiez()
 
 
